@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+# find duplicates in unordered list of integers
+# (7, 7, 5, 7, 6, 5)
+# (7, 5)
+
+use strict;
+use warnings;
+
+sub removeDuplicates {
+  my @listWithDupes = @_;
+
+  my %lookup;   # count the occurrences of integers;
+                # {  givenint => { count => count, pos => positioninlist },
+                #    givenint => { count => count, pos => positioninlist } } 
+  my $iterator = 1; 
+
+  map { if (exists $lookup{$_}) {
+          $lookup{$_}{count}++;
+        }
+        else {
+          $lookup{$_}{count} = 1;
+          $lookup{$_}{pos} = $iterator;
+          $iterator++;
+        }
+      } @listWithDupes;
+
+  my @listOfDupes = grep { $lookup{$_}{count} > 1 }  #get dupes
+  		    keys %lookup;   #lookup keys
+  
+  return @listOfDupes;
+}
+
+
+
+sub runTests {
+  use Data::Dumper;
+  my @test1 = (7, 7, 5, 7, 6, 5);
+  my @dupList = removeDuplicates(@test1);
+
+  print "Duplicate List: ", Dumper(@dupList);
+}
+
+
+
+runTests();
+

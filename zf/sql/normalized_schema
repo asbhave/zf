@@ -1,0 +1,26 @@
+    water_samples
+    id  PK
+    site
+
+    contaminants
+    id PK
+    name
+
+    factor_weights
+    id PK
+    contaminant_id
+    weight
+    FK contaminant_id contaminants(id)
+
+    water_sample_contaminants
+    water_sample_id
+    contaminant_id
+    concentration
+    FK contaminant_id contaminants(id)
+    FK water_sample_id water_samples(id)
+    PK (water_sample_id, contaminant_id)
+
+    sample2.chloroform: select concentration
+                      from water_sample_contaminants
+                      join contaminants on (water_sample_contaminants.contaminant_id = contaminants.id)
+                      where contaminant.name ='chloroform' and water_sample_id = 2

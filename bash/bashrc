@@ -1,0 +1,44 @@
+# .bashrc
+PATH=/opt/rh/devtoolset-2/root/usr/bin/:$PATH
+#NODE_JS_HOME=/home/radford/node-bin/node-v4.2.1-linux-x64
+NODE_JS_HOME=/home/radford/node-bin/node-v5.7.0-linux-x64/
+PATH=$NODE_JS_HOME/bin:$PATH:/local/bin
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+
+
+# User specific aliases and functions
+alias vi="vim -N"
+alias ll="ls -la"
+alias expdci="export DCICONF=~/dci/etc/dci.conf"
+alias expdcir="export DCICONF=../etc/dci.conf"
+alias exppoly="export POLYCONF=~/dci/etc/poly.conf"
+alias exppolyr="export POLYCONF=../etc/poly.conf"
+alias explib="export LIBRARYCONF=~/dci/etc/library.conf"
+alias explibr="export LIBRARYCONF=../etc/library.conf"
+
+alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
+
+#bash prompt
+PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\]'; export PS1;
+
+export EDITOR=vim 
+#export NODE_JS_DIR=/home/bhave/node-v0.12.2-linux-x64/
+#export PATH=${NODE_JS_DIR}/bin:${PATH}:/local/bin
+
+export POLY_REDIS_HOST=string.ftg
+export POLY_AUTO_LOGIN_DURATION_DAYS=20
+export POLY_WEB_PORT=8888
+export POLY_COOKIE_KEY=dflkj4$234^jkdj42@
+export POLY_URL=https://poly.edam-6.ftg
+#export POLY_URL=https://poly-internal.foxinc.com/
+export POLY_USERNAME=node-bhave
+export POLY_PASSWORD=node-bhave
+#export POLY_EMAIL_SMTP_HOST=bacon.ftg
+#export POLY_EMAIL_PASSWORD=password
+#export POLY_EMAIL_FROM=bhave-node
+set -o vi

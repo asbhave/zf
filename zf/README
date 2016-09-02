@@ -1,0 +1,58 @@
+           Water Sample Project
+
+Includes:
+---------
+
+The following modules are included in the application path:
+WaterSample.pm
+Factor.pm
+DataStore.pm
+DataStore/MySQL.pm
+DataStore/Memory.pm
+
+The schema used for MySQL DB is:
+sql/schema.sql
+
+Tests are located here:
+t/testWithDB.t
+t/testWithInMemoryData.t
+
+Sample client script is here:
+watersample.pl
+
+
+Dependencies and External Lbraries:
+-----------------------------------
+
+All the modules used are available with standard Perl distribution.
+
+If DBI.pm or DBD::mysql (MySQL driver) modules are not installed, they can be installed using CPAN
+>perl -MCPAN -e shell   
+cpan>install DBI
+cpan>install DBD::mysql
+cpan>quit
+
+Tests:
+------
+
+Tests can be run as follows:
+
+application path> prove -v
+
+
+Documentation:
+-------------
+
+Each module is documented using perl's POD (Plain Old Documentation)
+Example:
+application path> perldoc WaterSample
+
+
+Trying it:
+----------
+
+watersample is a barebones script that can be used as a template to interface with the modules
+
+appliction path>perl watersample.pl
+
+The output will consist of the the details of all water samples along with all computed factors
